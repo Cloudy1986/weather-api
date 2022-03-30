@@ -15,6 +15,6 @@ class WeatherChecker < Sinatra::Base
     pp @third_day = @forecast['locations']["London"]["values"][2]["temp"]
     erb :homepage
   end
-
+  
   run! if app_file == $0
 end
