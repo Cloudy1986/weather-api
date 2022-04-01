@@ -18,10 +18,14 @@ class WeatherChecker < Sinatra::Base
     erb :visual_crossing_api
   end
 
-  get 'open-weather-api' do
+  get '/open-weather-api' do
     @london_weather = OpenWeatherApi.new.forecast('51', '0')
+    p @london_weather
     @manchester_weather = OpenWeatherApi.new.forecast('53', '2')
+    p @manchester_weather
     @sunderland_weather = OpenWeatherApi.new.forecast('54', '1')
+    p @sunderland_weather
+    erb :open_weather_api
   end
 
   run! if app_file == $0

@@ -28,7 +28,6 @@ class OpenWeatherApi < WeatherApi
       :description => response['weather'][0]['description'],
       :temperature => ((response['main']['temp'].to_f) - 273.15).round.to_s
     }
-    p report
   end
 
 end
