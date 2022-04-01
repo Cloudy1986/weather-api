@@ -8,7 +8,6 @@ class WeatherApi
 end
 
 class VisualCrossingApi < WeatherApi
-  
   def forecast(city)
     response = HTTParty.get("https://weather.visualcrossing.com/VisualCrossingWebServices/rest/services/weatherdata/forecast?locations=#{city}&aggregateHours=24&unitGroup=uk&contentType=json&key=#{API_KEY_VISUAL_CROSSING}").parsed_response
     temperatures = {
@@ -17,11 +16,9 @@ class VisualCrossingApi < WeatherApi
       :third_day => response['locations']["#{city}"]["values"][2]["temp"]
     }
   end
-
 end
 
 class OpenWeatherApi < WeatherApi
-
   def forecast(latitude, longitude)
     response = HTTParty.get("https://api.openweathermap.org/data/2.5/weather?lat=#{latitude}&lon=#{longitude}&appid=#{API_KEY_OPEN_WEATHER}").parsed_response
     report = {
@@ -29,5 +26,4 @@ class OpenWeatherApi < WeatherApi
       :temperature => ((response['main']['temp'].to_f) - 273.15).round.to_s
     }
   end
-
 end
